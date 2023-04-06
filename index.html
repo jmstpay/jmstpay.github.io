@@ -15,6 +15,20 @@
         margin: 0;
         padding: 0;
       }
+      
+      .barra-superior {
+        background-color: #eea968;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+     .barra-superior h1 {
+        font-size: 28px;
+        color: #000;
+        margin: 0;
+      }
 
       .container {
         max-width: 600px;
@@ -57,7 +71,9 @@
   </head>
   <body>
     <div class="container">
-      <h1>Pagar a José Manuel (pasarela de pago segura)</h1>
+      <div class="barra-superior">
+    <h1>Mi Botón de Compra de Stripe</h1>
+  </div>
       <stripe-buy-button
         class="stripe-buy-button"
         buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
