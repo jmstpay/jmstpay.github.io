@@ -31,11 +31,27 @@
         max-width: 300px;
         width: 100%;
       }
+
+      footer {
+        background-color: #ddd;
+        padding: 20px;
+        text-align: center;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #777;
+      }
+
+      footer span {
+        color: #f00;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Pagar a José Manuel (jmstdotme)</h1>
+      <h1>Pagar a José Manuel</h1>
       <stripe-buy-button
         class="stripe-buy-button"
         buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
@@ -43,6 +59,12 @@
       >
       </stripe-buy-button>
     </div>
+    <footer>
+      <p>&copy; <span id="currentYear"></span> Hecho con &hearts; en Lepe por José Manuel Suárez Tocino</p>
+    </footer>
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <script>
+      document.getElementById('currentYear').innerHTML = new Date().getFullYear();
+    </script>
   </body>
 </html>
