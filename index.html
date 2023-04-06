@@ -1,11 +1,48 @@
-<h1> Pagar a José Manuel </h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Stripe Buy Button</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
 
-<stripe-buy-button
-  buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
-  publishable-key="pk_live_51MtxpxJkd3lF4FyslsWyNXEbwVAYR4ncUgWQZNxlSzYBT3BC3ZJ7OAbxgjnbF8Dc8XWGmqhpxeCemmmxkFJRPHbY00tK6n4IAR"
->
-</stripe-buy-button>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .stripe-buy-button {
+        display: block;
+        margin: 0 auto;
+        max-width: 300px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Stripe Buy Button</h1>
+      <stripe-buy-button
+        class="stripe-buy-button"
+        buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
+        publishable-key="pk_live_51MtxpxJkd3lF4FyslsWyNXEbwVAYR4ncUgWQZNxlSzYBT3BC3ZJ7OAbxgjnbF8Dc8XWGmqhpxeCemmmxkFJRPHbY00tK6n4IAR"
+      >
+      </stripe-buy-button>
+    </div>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  </body>
+</html>
