@@ -1,92 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pasarela segura</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap">
+    <title>Pasarela de pago segura</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        box-sizing: border-box;
-      }
-
       body {
-        font-family: "Chakra Petch", sans-serif;
         margin: 0;
-        padding: 0;
-      }
-      
-      .barra-superior {
         background-color: #eea968;
-        height: 40px;
+        font-family: "Chakra Petch", sans-serif;
+      }
+      .header {
+        background-color: #eea968;
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 2em;
+        color: black;
+      }
+      .container {
+        padding: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        height: calc(100vh - 140px);
       }
-
-     .barra-superior h1 {
-        font-size: 28px;
-        color: #000;
+      .footer {
+        background-color: #eea968;
+        padding: 10px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        color: black;
+      }
+      .footer p {
         margin: 0;
       }
-
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      h1 {
-        text-align: center;
-        background-color: #eea968;
-        padding: 20px;
-        font-size: 28px;
-        color: #000;
-        width: 100%;
-      }
-
-      .stripe-buy-button {
-        display: block;
-        margin: 0 auto;
-        max-width: 300px;
-        width: 100%;
-      }
-
-      footer {
-        background-color: #eea968;
-        padding: 20px;
-        text-align: center;
-        color: #000;
-      }
-
-      footer p {
-        margin: 0;
-        font-size: 14px;
-      }
-
-      footer span {
-        color: #f00;
+      #clock {
+        font-size: 0.8em;
       }
     </style>
   </head>
   <body>
+    <div class="header">
+      <h1>Pagar a José Manuel | Pasarela de pago segura</h1>
+    </div>
     <div class="container">
-      <div class="barra-superior">
-    <h1>Mi Botón de Compra de Stripe</h1>
-  </div>
+      <script
+        async
+        src="https://js.stripe.com/v3/buy-button.js"
+      ></script>
       <stripe-buy-button
-        class="stripe-buy-button"
         buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
         publishable-key="pk_live_51MtxpxJkd3lF4FyslsWyNXEbwVAYR4ncUgWQZNxlSzYBT3BC3ZJ7OAbxgjnbF8Dc8XWGmqhpxeCemmmxkFJRPHbY00tK6n4IAR"
-      >
-      </stripe-buy-button>
+      ></stripe-buy-button>
     </div>
-    <footer>
-      <p>&copy; <span id="currentYear"></span> Hecho con &hearts; en Lepe por José Manuel Suárez Tocino</p>
-    </footer>
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <div class="footer">
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Hecho con <span style="color: red;">&#9829;</span> en Lepe por José
+        Manuel Suárez Tocino
+      </p>
+      <p id="clock"></p>
+    </div>
     <script>
-      document.getElementById('currentYear').innerHTML = new Date().getFullYear();
+      function updateTime() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var day = now.getDate();
+        var month = now.getMonth() + 1;
+        var year = now.getFullYear();
+        var timeString =
+          day +
+          "/" +
+          month +
+          "/" +
+          year +
+          " " +
+          hour +
+          ":" +
+          minute +
+          ":" +
+          second;
+        document.getElementById("clock").innerHTML = timeString;
+      }
+      setInterval(updateTime, 1000);
     </script>
   </body>
 </html>
