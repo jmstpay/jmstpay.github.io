@@ -3,67 +3,41 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pasarela de pago segura</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        margin: 0;
-        background-color: #eea968;
-        font-family: "Chakra Petch", sans-serif;
-      }
-      .header {
-        background-color: #eea968;
-        padding: 20px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-      }
-      .header h1 {
-        margin: 0;
-        font-size: 2em;
-        color: black;
-      }
-      .container {
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: calc(100vh - 140px);
-      }
-      .footer {
-        background-color: #eea968;
-        padding: 10px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        color: black;
-      }
-      .footer p {
-        margin: 0;
-      }
-      #clock {
-        font-size: 0.8em;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="header">
       <h1>Pagar a José Manuel | Pasarela de pago segura</h1>
     </div>
     <div class="container">
-      <script
-        async
-        src="https://js.stripe.com/v3/buy-button.js"
-      ></script>
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
       <stripe-buy-button
         buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
         publishable-key="pk_live_51MtxpxJkd3lF4FyslsWyNXEbwVAYR4ncUgWQZNxlSzYBT3BC3ZJ7OAbxgjnbF8Dc8XWGmqhpxeCemmmxkFJRPHbY00tK6n4IAR"
       ></stripe-buy-button>
+
+      <div id="paypal-button-container-P-9AY67947GC949524WMQ6XH5Q"></div>
+      <script src="https://www.paypal.com/sdk/js?client-id=AbgYujA1RtF0hwey1tvz9mrnDNgDlBr5VtBRpD1zGfut8zdYvXgQjN-UJxUXhxJseuwXA2u7xqMX5v7l&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+      <script>
+        paypal.Buttons({
+          style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'subscribe'
+          },
+          createSubscription: function(data, actions) {
+            return actions.subscription.create({
+              /* Creates the subscription */
+              plan_id: 'P-9AY67947GC949524WMQ6XH5Q'
+            });
+          },
+          onApprove: function(data, actions) {
+            alert(data.subscriptionID); // You can add optional success message for the subscriber here
+          }
+        }).render('#paypal-button-container-P-9AY67947GC949524WMQ6XH5Q'); // Renders the PayPal button
+      </script>
     </div>
     <div class="footer">
       <p>
