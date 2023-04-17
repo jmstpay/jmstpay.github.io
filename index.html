@@ -16,36 +16,41 @@
         buy-button-id="buy_btn_1MtyUxJkd3lF4FysLka54tTr"
         publishable-key="pk_live_51MtxpxJkd3lF4FyslsWyNXEbwVAYR4ncUgWQZNxlSzYBT3BC3ZJ7OAbxgjnbF8Dc8XWGmqhpxeCemmmxkFJRPHbY00tK6n4IAR"
       ></stripe-buy-button>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <stripe-buy-button
+    buy-button-id="buy_btn_1MxvoVJkd3lF4Fysq1azjvS0"
+    publishable-key="pk_live_51MtxpxJkd3lF4FyslsWyNXEbwVAYR4ncUgWQZNxlSzYBT3BC3ZJ7OAbxgjnbF8Dc8XWGmqhpxeCemmmxkFJRPHbY00tK6n4IAR"
+  ></stripe-buy-button>
 
-      <div id="paypal-button-container-P-9AY67947GC949524WMQ6XH5Q"></div>
-      <script src="https://www.paypal.com/sdk/js?client-id=AbgYujA1RtF0hwey1tvz9mrnDNgDlBr5VtBRpD1zGfut8zdYvXgQjN-UJxUXhxJseuwXA2u7xqMX5v7l&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
-      <script>
-        paypal.Buttons({
-          style: {
-            shape: 'rect',
-            color: 'gold',
-            layout: 'vertical',
-            label: 'subscribe'
-          },
-          createSubscription: function(data, actions) {
-            return actions.subscription.create({
-              /* Creates the subscription */
-              plan_id: 'P-9AY67947GC949524WMQ6XH5Q'
-            });
-          },
-          onApprove: function(data, actions) {
-            alert(data.subscriptionID); // You can add optional success message for the subscriber here
-          }
-        }).render('#paypal-button-container-P-9AY67947GC949524WMQ6XH5Q'); // Renders the PayPal button
-      </script>
-    </div>
-    <div class="footer">
-      <p>
-        &copy;
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        Hecho con <span style="color: red;">&#9829;</span> en Lepe por José
+  <div id="paypal-button-container-P-9AY67947GC949524WMQ6XH5Q"></div>
+  <script src="https://www.paypal.com/sdk/js?client-id=AbgYujA1RtF0hwey1tvz9mrnDNgDlBr5VtBRpD1zGfut8zdYvXgQjN-UJxUXhxJseuwXA2u7xqMX5v7l&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+  <script>
+    paypal.Buttons({
+      style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-9AY67947GC949524WMQ6XH5Q'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+    }).render('#paypal-button-container-P-9AY67947GC949524WMQ6XH5Q'); // Renders the PayPal button
+  </script>
+</div>
+<div class="footer">
+  <p>
+    &copy;
+    <script>
+      document.write(new Date().getFullYear());
+    </script>
+    Hecho con <span style="color: red;">&#9829;</span> en Lepe por José
         Manuel Suárez Tocino
       </p>
       <p id="clock"></p>
